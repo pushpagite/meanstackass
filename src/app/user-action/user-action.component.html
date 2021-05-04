@@ -1,0 +1,187 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<div>
+    <!--<div>
+        <div>
+            <mat-grid-list cols="0" rowHeight="10:1">
+                <div>
+                    <span>
+                    <mat-icon style="background-color: white; width: 20px; z-index: 1;"> reorder</mat-icon>
+                    </span>
+                </div>
+           
+           <img src="assets/logo.png" id="exelalogo">
+           <mat-grid-tile style="background-color: skyblue;">
+          </mat-grid-tile>
+        </mat-grid-list>
+        </div>
+       
+    </div> -->
+
+    <div>
+
+        <header>
+            <div id="logoid">
+                <mat-icon id="icon">reorder</mat-icon>
+
+                <img src="assets/logo.png" id="complogo">
+                <a mat-icon-button style="margin-left: 1250px;">
+                    <!-- routerLink=''-->
+                    <mat-icon *ngIf="!avatar" style="margin-top:-110px; margin-left: 110px;">account_circle</mat-icon>
+                    <img *ngIf="avatar" [src]="avatar" />
+                    <button  (click)="toggleShow()" type="checkbox" style="border: none; margin-top: -100px; background-color: transparent;">
+                    <mat-icon style="margin-top: -50px; ">expand_less</mat-icon>
+                </button>
+                </a> event
+                <div id="logout"  *ngIf="isShown" class="row container-fluid">
+                    <div style="background-color: transparent; ;">
+    
+                        <button type="submit" style="background-color: transparent; margin-left: 50px; border: none; " (click)="Logout()">Logout</button>
+    
+                    </div>
+            </div>
+
+            </div>
+
+        </header>
+
+        <div>
+            <mat-grid-list cols="6" rowHeight="10:30" style="height: 130px;">
+                <mat-grid-tile id="tile">
+                    <!-- <div>   
+        <div>
+        <button>
+            <mat-icon > 
+            format_align_right
+            </mat-icon>
+            Dashboard
+        </button>
+    </div>
+    </div> -->
+
+                    <div>
+                        <div class="icon1">
+                            <button [routerLink]="['/graphmodule']" routerLinkActive="router-link-active">
+                                <mat-icon> format_align_right</mat-icon>
+                                Dashboard
+                            </button>
+                            <br> <br>
+                            <button [routerLink]="['/useraction']" routerLinkActive="router-link-active">
+                                <mat-icon> people</mat-icon>
+                                Users
+                            </button>
+                        </div>
+                    </div>
+
+                </mat-grid-tile>
+                <!--New added-->
+                <div class="table-view" id="divScroll">
+                    <mat-form-field style="margin-left:700px;">
+                        <mat-icon class="search-icon" matSuffix>search</mat-icon>
+                        <input #myInput matInput type="text" [(ngModel)]="username" (ngModelChange)="Search()"
+                            placeholder=" &nbsp; Search" />
+                    </mat-form-field>
+                    &nbsp;&nbsp;&nbsp;
+                    <button mat-raised-button color="accent" [routerLink]="['/newuser']"
+                        routerLinkActive="router-link-active">CREATE NEW</button>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col" (click)="sort('username')" style="text-align:left">UserName
+                                    <i class="fa fa-fw fa-sort"></i>
+                                    <input [(ngModel)]="username" (input)="UsernameFilter()" style="width: 100px"
+                                        class="filter" type="text" placeholder="&nbsp;Filter" />
+
+                                </th>
+                                <th scope="col" (click)="sort('firstname')">FirstName
+                                    <i class="fa fa-fw fa-sort"></i>
+
+                                    <input [(ngModel)]="fname" (input)="firstnameFilter()" style="width: 100px"
+                                        class="filter" type="text" placeholder="&nbsp;Filter" />
+
+                                </th>
+
+                                <th scope="col" (click)="sort('lastname')">Lastnme
+                                    <i class="fa fa-fw fa-sort"></i>
+
+                                    <input [(ngModel)]="lname" (input)="lastnameFilter()" style="width: 100px"
+                                        class="filter" type="text" placeholder="&nbsp;Filter" />
+                                </th>
+                                
+                                <th scope="col" (click)="sort('email')">Email
+                                    <i class="fa fa-fw fa-sort"></i><br>
+
+                                    <input [(ngModel)]="email" (input)="emailFilter()" style="width: 100px"
+                                        class="filter" type="text" placeholder="&nbsp;Filter" />
+                                </th>
+
+                                <th scope="col">Phone</th>
+                                <th scope="col">DOB</th>
+
+                                <th scope="col" (click)="sort('userId')">UserId
+                                    <i class="fa fa-fw fa-sort"></i>
+
+                                    <input [(ngModel)]="userId" (input)="useridFilter()" style="width: 100px"
+                                        class="filter" type="text" placeholder="&nbsp;Filter" />
+                                </th>
+
+                                <th scope="col" (click)="sort('gender')">Gender
+                                    <i class="fa fa-fw fa-sort"></i>
+
+                                    <input [(ngModel)]="gender" (input)="genderFilter()" style="width: 100px"
+                                    class="filter" type="text" placeholder="&nbsp;Filter" />
+
+                                </th>
+                                <th scope="col">Password</th>
+                                <th class="text-center" scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr *ngFor="let user of User; let i = index"> -->
+                            <tr *ngFor="let user of User.slice().reverse() | orderBy: key:reverse | paginate: {itemsPerPage:3,currentPage:p} ; let i = index">
+
+                                <td>{{user.username}}</td>
+                                <td>{{user.fname}}</td>
+                                <td>{{user.lname}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.phone}}</td>
+                                <td>{{user.date}}</td>
+                                <td>{{user.userId}}</td>
+                                <td>{{user.gender}}</td>
+                                <td>{{user.password}}</td>
+
+                                <td class="text-center">
+                                    <button (click)="delete(user._id, i)"
+                                        style="background-color: transparent; border: white;">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                    <button routerLink="/updateuser/{{user._id}}"
+                                        style="background-color: transparent; border: white;">
+                                        <mat-icon>create</mat-icon>
+
+                                    </button>
+                            </tr>
+                        </tbody>
+                        <pagination-controls (pageChange)="p=$event" ></pagination-controls> 
+
+                    </table>
+
+
+
+
+
+                </div> -->
+                <!--New added end-->
+
+            </mat-grid-list>
+
+        </div>
+
+        <div>
+            <mat-grid-list cols="0" rowHeight="15:1">
+                <mat-grid-tile id="footer">
+                    @Copyright 2021 Exela Technologies, LLC. All Rights Reserved.
+                    v21.01.01
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+    </div>

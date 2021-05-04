@@ -1,0 +1,91 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /*  input[type="text"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: none;
+        border-bottom: 2px solid black;
+      }
+
+     input[type="password"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: none;
+        border-bottom: 2px solid black;
+      }  */
+  </style>
+</head>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8">
+      <img [src]="path1" width="1000px" height="700px" style="margin-left:10px;" />
+    </div>
+    <div class="col-lg-4" id="logodiv">
+      <div>
+        <mat-icon aria-hidden="false" [ngStyle]="{ color: 'blue' }">home</mat-icon>
+      </div>
+      <div id="exelalogo">
+        <img src="assets/logo.png" id="complogo" />
+      </div>
+      <br />
+      <form [formGroup]="myform">
+        <!-- <label for="fname"><b>Login Name</b></label>
+          <input type="text" id="fname" name="fname" required/> -->
+        <mat-form-field [style.width.%]="100">
+          <mat-label>Login Name</mat-label>
+          <input matInput fxFlex="100" formControlName="username" [formControl]="name" required>
+          <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+
+        </mat-form-field>
+
+        <br /> <br><br>
+
+
+        <mat-form-field [style.width.%]="100">
+          <mat-label> Password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" [formControl]="pw"  required>
+          <mat-error *ngIf="pw.invalid">{{getEmailErrorMessage()}}</mat-error>
+
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+          </button>
+        </mat-form-field>
+        <br /> <br /> <br>
+        <input type="checkbox" />&nbsp;&nbsp;<b>Remember Me</b> <br /><br />
+
+        <button type="submit" (click)="login()" mat-raised-button color="accent" style="width: 35em">
+          LOGIN
+        </button>
+        &nbsp;
+        <br />
+        <a href="#" style="color: blue; font-size: 12px"><b>Forgot password?</b></a>
+        <a href="#" style="color: blue; margin-left: 250px; font-size: 12px"><b>Forgot UserName?</b></a>
+        <br /><br />
+        <div>
+          <span>
+            <b> New User ?</b> &nbsp;
+            <a href="#" style="color: blue; font-size: 12px" routerLink="/add-user"><b>Create an Account</b></a>
+          </span>
+
+          <br /><br /><br /><br /><br /><br /><br /><br /><br />
+          <span style="font-size: 12px">
+            <b>Copyright 2021, Exela V1.0.0, All Rights Reserved.</b>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+</html>

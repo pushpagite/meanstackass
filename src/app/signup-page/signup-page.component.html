@@ -1,0 +1,237 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* input[type=text] {
+              width: 100%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              box-sizing: border-box;
+              border: none;
+              border-bottom: 2px solid black;
+            }
+
+            input[type=password] {
+              width: 100%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              box-sizing: border-box;
+              border: none;
+              border-bottom: 2px solid black;
+            }
+
+            input[type=email] {
+              width: 100%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              box-sizing: border-box;
+              border: none;
+              border-bottom: 2px solid black;
+            }
+
+            input[type=date] {
+              width: 100%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              box-sizing: border-box;
+              border: none;
+              border-bottom: 2px solid black;
+            } */
+  </style> 
+</head>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8">
+      <img [src]="path" width="1000px" height="1150px" style="margin-left:5px">
+    </div>
+    <div class=" col-lg-4" id="logodiv">
+
+      <div>
+        <mat-icon aria-hidden="false" [ngStyle]="{'color':'blue'}">home</mat-icon>
+      </div>
+      <div id="exelalogo">
+        <img src="assets/logo.png" id="complogo" />
+
+      </div>
+      <br>
+      <form [formGroup]="userForm">
+        <!-- <label for="uname"><b>User Name</b></label>
+                    <input type="text" id="uname" name="uname"> -->
+
+        <!--  User Name-->
+        <mat-form-field [style.width.%]="100">
+          <mat-label>User Name</mat-label>
+          <input matInput   fxFlex="100"  [formControl]="uname" formControlName="username" required>
+          <mat-error *ngIf="uname.invalid">{{getUserErrorMessage()}}</mat-error>
+
+        </mat-form-field>
+
+
+
+        <!--First Name-->
+        <mat-form-field [style.width.%]="100">
+          <mat-label>First Name</mat-label>
+          <input matInput fxFlex="100" [formControl]="fname" formControlName="fname" required>
+          <mat-error *ngIf="uname.invalid">{{getFnameErrorMessage()}}</mat-error>
+
+        </mat-form-field>
+
+        <!-- <label for="lname"><b>Last Name</b></label>
+                    <input type="text" id="lname" name="lname"> -->
+
+        <!--Last Name-->
+        <br /><br />
+        <mat-form-field [style.width.%]="100">
+          <mat-label>Last Name</mat-label>
+          <input matInput fxFlex="100" [formControl]="lname" formControlName="lname" required>
+          <mat-error *ngIf="uname.invalid">{{getLnameErrorMessage()}}</mat-error>
+
+        </mat-form-field>
+
+
+        <!--Email -->
+        <br /><br />
+        <mat-form-field [style.width.%]="100">
+          <mat-label>Email</mat-label>
+          <input matInput [formControl]="email" formControlName="email" required>
+          <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+
+        </mat-form-field>
+
+
+        <!--Phone-->
+        <br /><br />
+        <mat-form-field [style.width.%]="100">
+          <mat-label>Phone</mat-label>
+          <input matInput  [formControl]="contact" formControlName="phone" required>
+          <mat-error *ngIf="contact.invalid">{{getContactErrorMessage()}}</mat-error>
+
+        </mat-form-field>
+
+
+
+        <!--Date-->
+        <br /><br />
+        <mat-form-field [style.width.%]="100">
+          <mat-label>DOB</mat-label>
+          <input matInput [matDatepicker]="picker" [formControl]="dob" formControlName="date" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="dob.invalid">{{getDOBErrorMessage()}}</mat-error>
+
+        </mat-form-field>
+
+      
+
+        <!--User Id-->
+        <br /><br />
+        <mat-form-field [style.width.%]="100">
+          <mat-label>UserID</mat-label>
+          <input matInput [formControl]="userid" formControlName="userId" required>
+          <mat-error *ngIf="userid.invalid">{{getUserIdErrorMessage()}}</mat-error>
+
+        </mat-form-field>
+
+        <!-- <div class="form-group">
+                        <label for="sel1">Role </label>
+                        <select class="form-control" id="sel1">
+                          <option>1</option>
+                          <option>2</option>
+                          
+                        </select>
+                        </div> -->
+
+        <!-- Role -->
+        <br /><br />
+        <mat-form-field [style.width.%]="100">
+          <mat-label>Role</mat-label>
+          <mat-select [formControl]="role1"  required>
+            <mat-option *ngFor="let r of role" [value]="r.value" >
+              {{r.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="role1.invalid">{{getRoleErrorMessage()}}</mat-error>
+
+        </mat-form-field>
+
+
+
+        <!-- <label for="gender"><b>Gender</b></label>
+                    <input type="password" id="pw" name="pw"> -->
+
+        <!--Gender-->
+        <br /><br />
+        <mat-form-field [style.width.%]="100">
+          <mat-label>Gender</mat-label>
+          <input matInput  [formControl]="gdr"  formControlName="gender" required>
+          <mat-error *ngIf="gdr.invalid">{{getGenderErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <!-- <mat-form-field [style.width.%]="100">
+          <mat-label>Gender</mat-label>
+          <input matInput formControlName="gender">
+        </mat-form-field> -->
+        <!-- <mat-form-field [style.width.%]="100">
+          <mat-label>Gender</mat-label>
+          <mat-select [formControl]="gdr"  required>
+            <mat-option *ngFor="let g of gender" [value]="g.value" >
+              {{g.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="role1.invalid">{{getGenderErrorMessage()}}</mat-error>
+
+        </mat-form-field> -->
+
+
+        <!-- <label for="pw"><b>Password</b></label>
+                     <input type="password" id="pw" name="pw"> -->
+
+        <!--Password-->
+        <br /><br />
+        <mat-form-field [style.width.%]="100">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" >
+          <!-- <mat-error *ngIf="pw.invalid">{{getErrorMessage_password()}}</mat-error> -->
+
+        </mat-form-field>
+
+        <!-- <label for="vpw"><b>Verify Password</b></label>
+                     <input type="password" id="vpw" name="vpw"> -->
+
+        <!--Verify Password-->
+        <br /><br />
+        <mat-form-field [style.width.%]="100">
+          <mat-label>Verify Password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'">
+          <!-- <mat-error *ngIf="vpw.invalid">{{getErrorMessage_verifypassword()}}</mat-error> -->
+
+        </mat-form-field>
+
+        <br><br><br>
+
+        <button type="submit" (click)="onSubmit()"  mat-raised-button color="accent" style="width : 35em; ">Register</button>&nbsp;
+        <br> <br>
+
+        <div>
+          <span>
+            <b> Already have an Account?</b> &nbsp;
+            <a href="#" routerLink="" style="color: blue;font-size: 12px;"><b>Sign in</b></a>
+          </span>
+
+
+          <br><br><br><br><br><br><br><br><br><br>
+          <span style="font-size: 12px;">
+            <b>Copyright 2021, Exela V1.0.0, All Rights Reserved.</b>
+          </span>
+        </div>
+
+
+      </form>
+
+    </div>
+  </div>
+
+</div>
+</html>

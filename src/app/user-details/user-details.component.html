@@ -1,0 +1,149 @@
+<html>
+  <head>
+    
+
+  </head>
+<div>
+  <!--<div>
+      <div>
+          <mat-grid-list cols="0" rowHeight="10:1">
+              <div>
+                  <span>
+                  <mat-icon style="background-color: white; width: 20px; z-index: 1;"> reorder</mat-icon>
+                  </span>
+              </div>
+         
+         <img src="assets/logo.png" id="exelalogo">
+         <mat-grid-tile style="background-color: skyblue;">
+        </mat-grid-tile>
+      </mat-grid-list>
+      </div>
+     
+  </div> -->
+
+  <div>
+
+    <header>
+      <div id="logoid">
+        <mat-icon id="icon">reorder</mat-icon>
+
+        <img src="assets/logo.png" id="complogo">
+
+      </div>
+
+    </header>
+
+    <div>
+      <mat-grid-list cols="6" rowHeight="10:30" style="height: 130px;">
+        <mat-grid-tile id="tile">
+          <!-- <div>   
+      <div>
+      <button>
+          <mat-icon > 
+          format_align_right
+          </mat-icon>
+          Dashboard
+      </button>
+  </div>
+  </div> -->
+
+          <div>
+            <div class="icon1">
+              <button>
+                <mat-icon> format_align_right</mat-icon>
+                Dashboard
+              </button>
+              <br> <br>
+              <button [routerLink]="['/newuser']" routerLinkActive="router-link-active" >
+                <mat-icon> people</mat-icon>
+                Users
+              </button>
+            </div>
+          </div>
+
+        </mat-grid-tile>
+        <!--New added-->
+        <div class="table-view">
+        <!-- search filter and create new username -->
+        <mat-form-field style="margin-left: 400px;">
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. fname lname or username" #input>
+        </mat-form-field>
+        &nbsp;&nbsp;&nbsp;
+        <button mat-raised-button color="accent" [routerLink]="['/newuser']" routerLinkActive="router-link-active" >CREATE NEW</button>
+
+
+          <!-- start table-->
+          <table mat-table [dataSource]="User" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="username">
+              <th mat-header-cell *matHeaderCellDef> User Name. </th>
+              <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="firstname">
+              <th mat-header-cell *matHeaderCellDef>First Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.fname}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="lastname">
+              <th mat-header-cell *matHeaderCellDef> Last Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.lname}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Email">
+              <th mat-header-cell *matHeaderCellDef> Email </th>
+              <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+
+
+             <!-- Phone -->
+            <ng-container matColumnDef="phone">
+              <th mat-header-cell *matHeaderCellDef> Phone </th>
+              <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+            </ng-container>
+
+            <!-- DOB-->
+            <ng-container matColumnDef="DOB">
+              <th mat-header-cell *matHeaderCellDef> DOB </th>
+              <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          </table>
+
+          <!-- end table-->
+          <!-- Paginator to display no of pages-->
+         
+          <mat-paginator [pageSizeOptions]="[3, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
+        </div>
+        <!--New added end-->
+
+      </mat-grid-list>
+
+    </div>
+
+    <div>
+      <mat-grid-list cols="0" rowHeight="15:1">
+        <mat-grid-tile id="footer">
+          @Copyright 2021 Exela Technologies, LLC. All Rights Reserved.
+          v21.01.01
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+
+</div>
+
+</html>

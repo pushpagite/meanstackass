@@ -1,0 +1,15 @@
+<mat-card class="matcard">
+    <mat-card-title>User Details</mat-card-title>
+    
+    <div class="chart-wrapper">
+        <canvas baseChart 
+        [colors] ="barChartColor"
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+      </canvas>
+    </div>
+    </mat-card>

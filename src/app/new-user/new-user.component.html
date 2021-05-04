@@ -1,0 +1,77 @@
+<div>
+
+  <div>
+
+    <header>
+      <div id="logoid">
+        <mat-icon id="icon">reorder</mat-icon>
+
+        <img src="assets/logo.png" id="complogo">
+        <a mat-icon-button style="margin-left: 1250px;">
+          <!-- routerLink=''-->
+          <mat-icon *ngIf="!avatar" style="margin-top:-110px; margin-left: 110px;">account_circle</mat-icon>
+          <img *ngIf="avatar" [src]="avatar" />
+          <button  (click)="toggleShow()" type="checkbox" style="border: none; margin-top: -100px; background-color: transparent;">
+          <mat-icon style="margin-top: -50px; ">expand_less</mat-icon>
+      </button>
+      </a> event
+      <div id="logout"  *ngIf="isShown" class="row container-fluid">
+          <div style="background-color: transparent; ;">
+
+              <button type="submit" style="background-color: transparent; margin-left: 50px; border: none; " (click)="Logout()">Logout</button>
+
+          </div>
+  </div>
+
+      </div>
+
+    </header>
+
+    <div>
+      <mat-grid-list cols="6" rowHeight="10:30" style="height: 130px;">
+        <mat-grid-tile id="tile">
+          <!-- <div>   
+    <div>
+    <button>
+        <mat-icon > 
+        format_align_right
+        </mat-icon>
+        Dashboard
+    </button>
+</div>
+</div> -->
+
+          <div>
+            <div class="icon">
+              <button [routerLink]="['/graphmodule']" routerLinkActive="router-link-active">
+                <mat-icon> format_align_right</mat-icon>
+                Dashboard
+              </button>
+              <br> <br>
+              <button [routerLink]="['/useraction']">
+                <mat-icon> people</mat-icon>
+                Users
+              </button>
+            </div>
+          </div>
+
+        </mat-grid-tile>
+        <!--New added-->
+        <div class="table-view">
+          <app-create-user></app-create-user>
+        </div>
+        <!--New added end-->
+
+      </mat-grid-list>
+
+    </div>
+
+    <div>
+      <mat-grid-list cols="0" rowHeight="15:1">
+        <mat-grid-tile id="footer">
+          @Copyright 2021 Exela Technologies, LLC. All Rights Reserved.
+          v21.01.01
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>

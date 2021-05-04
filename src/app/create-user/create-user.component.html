@@ -1,0 +1,106 @@
+<div>
+    <mat-card class="matcard">
+        <mat-card-header>
+            <mat-card-title> Create New User</mat-card-title>
+        </mat-card-header>
+        <mat-icon>person</mat-icon>
+        <br>
+
+        <mat-card>
+            <form [formGroup]="newuserForm">
+                <mat-form-field>
+                    <mat-label>User Name</mat-label>
+                    <input matInput [ngStyle]="{'width':'200px'}" formControlName="username">
+                </mat-form-field>
+                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                &nbsp;&nbsp;
+
+                <mat-form-field>
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="fname">
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="lname">
+                </mat-form-field>
+                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                &nbsp;&nbsp;
+
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Phone</mat-label>
+                    <input matInput formControlName="phone">
+                </mat-form-field>
+                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                &nbsp;&nbsp;
+
+                <!--
+                    <mat-form-field>
+                        <mat-label>Date Of Birth</mat-label>
+                        <input matInput>
+                    </mat-form-field> -->
+
+                    <mat-form-field>
+                        <mat-label>DOB</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>User ID</mat-label>
+                    <input matInput formControlName="userId">
+                </mat-form-field>
+
+                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                &nbsp;&nbsp;
+
+                <mat-form-field>
+                    <mat-label>Role</mat-label>
+                    <mat-select>
+                        <mat-option value="one"> Manager</mat-option>
+                        <mat-option value="two">General Manager</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <mat-label>Gender</mat-label>
+                    <input matInput formControlName="gender">
+                </mat-form-field>
+                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                &nbsp;&nbsp;
+
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <mat-label> Verify Password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'">
+                </mat-form-field>
+                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                &nbsp;&nbsp;
+                <button mat-button color="primary" [routerLink]="['/useraction']">Cancel</button>
+                <button mat-raised-button color="accent" (click)=" onSubmit()"
+                    routerLinkActive="router-link-active">SUBMIT</button>
+
+
+
+            </form>
+        </mat-card>
+
+
+
+
+
+    </mat-card>
+</div>

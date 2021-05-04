@@ -1,0 +1,91 @@
+
+#footer {
+    background-color: #d4dce0;
+    position: absolute;
+   /* top: -40px; */
+    bottom: 10px;
+    height: 30px;
+  
+  }
+
+  #tile
+  {
+    background: #4882e0;
+    position: absolute;
+    top: -3px;
+    z-index: 1;
+    height: 140px;
+  }
+
+
+  /* new added*/
+
+  #icon
+{
+    display: block; 
+    z-index: 2;
+    background-color: white; 
+}
+#logoid{
+    background-color: white;
+    width: 250px;
+}
+
+#divid
+{
+    background-color: skyblue;
+}
+#complogo
+{
+    display: block;
+    margin-top: -30px;
+    margin-left: 40px;
+    width: 150px;
+    height: 70px;
+    z-index: 2;
+    background-color: white;
+}
+
+#exelalogo
+{
+    margin:left ;
+   width: 100px;
+}
+
+header{
+    display: block;
+    background-color: skyblue;
+    height: 70px;
+   
+}
+
+
+.icon
+{
+margin-top: -350px;
+margin-left: -100px;
+background-color: transparent;
+}
+
+
+/* *.matcard
+{
+    max-width: 600px ;
+    max-height: 1000px;
+    margin-left: 300px;
+    margin-top: 10px;
+} */
+.table-view{
+    top: 100px;
+    position: absolute;
+    width:50%;
+    left: 300px;
+    border: 0.1px solid grey;
+}
+
+#logout
+{
+    width: 215px; 
+    margin-left: 1300px;
+    margin-top: -80px;   
+}

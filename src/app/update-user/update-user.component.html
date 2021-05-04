@@ -1,0 +1,166 @@
+<div>
+
+    <header>
+        <div id="logoid">
+            <mat-icon id="icon">reorder</mat-icon>
+
+            <img src="assets/logo.png" id="complogo">
+            <a mat-icon-button style="margin-left: 1250px;">
+                <!-- routerLink=''-->
+                <mat-icon *ngIf="!avatar" style="margin-top:-110px; margin-left: 110px;">account_circle</mat-icon>
+                <img *ngIf="avatar" [src]="avatar" />
+                <button  (click)="toggleShow()" type="checkbox" style="border: none; margin-top: -100px; background-color: transparent;">
+                <mat-icon style="margin-top: -50px; ">expand_less</mat-icon>
+            </button>
+            </a> event
+            <div id="logout"  *ngIf="isShown" class="row container-fluid">
+                <div style="background-color: transparent; ;">
+
+                    <button type="submit" style="background-color: transparent; margin-left: 50px; border: none; " (click)="Logout()">Logout</button>
+
+                </div>
+        </div>
+
+        </div>
+
+    </header>
+
+    <div>
+        <mat-grid-list cols="6" rowHeight="10:30" style="height: 130px;">
+            <mat-grid-tile id="tile">
+                <!-- <div>   
+    <div>
+    <button>
+        <mat-icon > 
+        format_align_right
+        </mat-icon>
+        Dashboard
+    </button>
+</div>
+</div> -->
+
+                <div>
+                    <div class="icon">
+                        <button [routerLink]="['/graphmodule']" routerLinkActive="router-link-active" >
+                            <mat-icon> format_align_right</mat-icon>
+                            Dashboard
+                        </button>
+                        <br> <br>
+                        <button [routerLink]="['/useraction']" routerLinkActive="router-link-active" >
+                            <mat-icon> people</mat-icon>
+                            Users
+                        </button>
+                    </div>
+                </div>
+
+            </mat-grid-tile>
+            <!--New added-->
+            <h4>Dashboard</h4>
+
+            <div class="table-view">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title> Create New User</mat-card-title>
+                    </mat-card-header>
+                <mat-icon>person</mat-icon>
+                        <br>
+            
+            <mat-card class="matcard">
+                <form [formGroup]="updateForm">
+
+                <mat-form-field>
+                    <mat-label>User Name</mat-label>
+                    <input matInput formControlName="username">
+                  </mat-form-field>
+
+                  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+                <mat-form-field>
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="fname">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="lname">
+                </mat-form-field>
+                 &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Phone</mat-label>
+                    <input matInput formControlName="phone">
+                </mat-form-field>
+                 &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                
+                 <mat-form-field>
+                    <mat-label>DOB</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>User ID</mat-label>
+                    <input matInput formControlName="userId">
+                </mat-form-field>
+
+                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+                <mat-form-field>
+                    <mat-label>Role</mat-label>
+                    <mat-select>
+                      <mat-option value="one">Manager</mat-option>
+                      <mat-option value="two">Sr. Manager</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+
+                  <mat-form-field>
+                    <mat-label>Gender</mat-label>
+                    <input matInput formControlName="gender">
+                </mat-form-field>
+                 &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+
+                 <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                </mat-form-field>
+
+                
+                <mat-form-field>
+                    <mat-label> Verify Password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'">
+                </mat-form-field>
+                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                <button mat-button color="primary" [routerLink]="['/useraction']">Cancel</button>
+                <button mat-raised-button color="accent" [routerLink]="['/useraction']" routerLinkActive="router-link-active" (click)="onUpdate()">UPDATE</button>
+
+
+                </form>
+
+
+            </mat-card>
+        </mat-card>
+
+            </div>
+            <!--New added end-->
+
+        </mat-grid-list>
+
+    </div>
+
+    <div>
+        <mat-grid-list cols="0" rowHeight="15:1">
+            <mat-grid-tile id="footer">
+                @Copyright 2021 Exela Technologies, LLC. All Rights Reserved.
+                v21.01.01
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</div>
