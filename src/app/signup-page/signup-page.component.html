@@ -148,12 +148,11 @@
         <br /><br />
         <mat-form-field [style.width.%]="100">
           <mat-label>Role</mat-label>
-          <mat-select [formControl]="role1"  required>
+          <mat-select  formControlName="userrole">
             <mat-option *ngFor="let r of role" [value]="r.value" >
               {{r.viewValue}}
             </mat-option>
           </mat-select>
-          <mat-error *ngIf="role1.invalid">{{getRoleErrorMessage()}}</mat-error>
 
         </mat-form-field>
 
@@ -192,7 +191,7 @@
         <br /><br />
         <mat-form-field [style.width.%]="100">
           <mat-label>Password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" >
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
           <!-- <mat-error *ngIf="pw.invalid">{{getErrorMessage_password()}}</mat-error> -->
 
         </mat-form-field>

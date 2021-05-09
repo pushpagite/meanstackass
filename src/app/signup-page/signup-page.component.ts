@@ -15,8 +15,8 @@ export class SignupPageComponent implements OnInit {
 
   path: String = "./assets/image1.jpg";
   role = [
-    { value: 'M', viewValue: 'Manager' },
-    { value: 'G', viewValue: 'General' }
+    { value: 'Manager', viewValue: 'Manager' },
+    { value: 'General', viewValue: 'General' }
 
   ];
 
@@ -169,6 +169,7 @@ getGenderErrorMessage()
       email: '',
       phone: '',
       date: '',
+      userrole:[''],
       userId: '',
       gender: [''],
       password: ''

@@ -5,6 +5,7 @@ export class Users {
     email !: string;
     phone !: Number;
     date !: string;
+    userrole!: string;
     userId !: string;
     gender !: string;
     password !: string;

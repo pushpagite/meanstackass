@@ -39,6 +39,9 @@ let User = new Schema({
     type: Date,
     required : true
   },
+  userrole: {
+    type: String,
+  },
   userId: {
     type: String,
     required : true
