@@ -5,8 +5,7 @@
             <mat-icon id="icon">reorder</mat-icon>
 
             <img src="assets/logo.png" id="complogo">
-            <a mat-icon-button style="margin-left: 1250px;">
-                <!-- routerLink=''-->
+            <!-- <a mat-icon-button style="margin-left: 1250px;">
                 <mat-icon *ngIf="!avatar" style="margin-top:-110px; margin-left: 110px;">account_circle</mat-icon>
                 <img *ngIf="avatar" [src]="avatar" />
                 <button  (click)="toggleShow()" type="checkbox" style="border: none; margin-top: -100px; background-color: transparent;">
@@ -19,7 +18,21 @@
                     <button type="submit" style="background-color: transparent; margin-left: 50px; border: none; " (click)="Logout()">Logout</button>
 
                 </div>
+        </div> -->
+        <div style="margin-left: 1200px; margin-top: -40px; height: 70px; width: 100px;">
+            <a mat-icon-button>
+                <mat-icon *ngIf="!avatar" style="margin-top: -30px;">account_circle</mat-icon>
+                <img *ngIf="avatar" [src]="avatar" />
+            </a>
+            <h3 style="margin-left: 50px;margin-top: -50px;">{{uname}}</h3>
+            <h3 style="margin-left: 50px;margin-top: -25px;">{{role}}</h3>
         </div>
+        <div style="margin-left: 1350px; margin-top: -70px;">
+           <button type="submit" (click)="Logout()" style="background: transparent;border: none;">
+            <mat-icon>expand_less</mat-icon>
+        </button> 
+    </div>
+
 
         </div>
 

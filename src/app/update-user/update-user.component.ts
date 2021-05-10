@@ -53,7 +53,10 @@ export class UpdateUserComponent implements OnInit {
     })
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getUsername();
+    this.getUserRole();
+   }
 
   onUpdate(): any {
     this.crudService.updateUser(this.getId, this.updateForm.value)
@@ -81,7 +84,46 @@ export class UpdateUserComponent implements OnInit {
  
      this.isShown = ! this.isShown;
      
-     }
+   }
+
+   uname!: string | null;
+    getUsername(): void {
+  
+      this.uname = sessionStorage.getItem('userName');
+      console.log('username ' + this.uname);
+  
+  
+    }
+  
+  
+    //Get Users Role
+    Users: any = [];
+    role!:string;
+    getUserRole() {
+      console.log('inside get user');
+      
+      this.crudService.GetUsers().subscribe((res) => {
+        this.Users = res;
+        //console.log(this.User)
+  
+        //iterate through array
+        this.Users.forEach( (value: any) => {
+          //console.log('inside for');
+          //console.log(value);
+         // console.log(value.username);
+          if(value.username==this.uname)
+          {
+  
+            this.role = value.userrole;
+            console.log('Userrole'+this.role);
+            
+          }
+          
+        });
+  
+      });
+  
+    }
   
 
 }

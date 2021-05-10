@@ -13,6 +13,8 @@ export class GraphModuleComponent implements OnInit {
     private crudService:CrudService) { }
 
   ngOnInit(): void {
+    this.getUsername();
+    this.getUserRole();
   }
   avatar!:string;
   Logout() {
@@ -29,6 +31,43 @@ export class GraphModuleComponent implements OnInit {
 
     this.isShown = ! this.isShown;
     
+    }
+
+    username!: string | null;
+    getUsername(): void {
+  
+      this.username = sessionStorage.getItem('userName');
+      console.log('username ' + this.username);
+  
+  
+    }
+  
+  
+    //Get Users Role
+    User: any = [];
+    role!:string;
+    getUserRole() {
+      this.crudService.GetUsers().subscribe((res) => {
+        this.User = res;
+        console.log(this.User)
+  
+        //iterate through array
+        this.User.forEach( (value: any) => {
+          //console.log('inside for');
+          //console.log(value);
+          console.log(value.username);
+          if(value.username==this.username)
+          {
+  
+            this.role = value.userrole;
+            console.log(this.role);
+            
+          }
+          
+        });
+  
+      });
+  
     }
 
 

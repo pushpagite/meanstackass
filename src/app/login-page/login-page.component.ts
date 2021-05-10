@@ -68,6 +68,8 @@ export class LoginPageComponent implements OnInit {
   login(): any {
     console.log("inside login");
     //console.log(this.myform.value);
+    let user = this.myform.value;
+
     this.crudService.loginData(this.myform.value).
       subscribe((res) => {
         this.loginDetails = res;
@@ -77,7 +79,7 @@ export class LoginPageComponent implements OnInit {
           console.log(res.message);
           //set username and token from localstorage
           let token = sessionStorage.setItem('userToken', res.token);
-          let uname = sessionStorage.setItem('userName', res.username);
+          let uname = sessionStorage.setItem('userName', user.username);
 
           // after login then navigate page from dashborad 
           if (token !== res.token || uname !== res.username) {
