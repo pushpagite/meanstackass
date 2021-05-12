@@ -9,6 +9,7 @@ export class Users {
     userId !: string;
     gender !: string;
     password !: string;
+    file!:string;
 
     //new added
    

@@ -32,6 +32,7 @@ userRoute.route('/add-user').post((req, res, next) => {
     return next(error)
   } else {    
     data.password= await bcrypt.hashSync(data.password,10);
+    console.log(req.body);
     data.save();
       res.send({
         username:data.username,
@@ -42,7 +43,8 @@ userRoute.route('/add-user').post((req, res, next) => {
         date:data.date,
        userId:data.userId,
        gender:data.gneder,
-       password:data.password
+       password:data.password,
+       file:data.file,
      })
   }
 });

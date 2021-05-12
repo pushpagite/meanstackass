@@ -10,9 +10,11 @@ import { CrudService } from './../service/crud.service';
 })
 export class CreateUserComponent implements OnInit {
   hide = true;
+  url:any='';
 
 
   newuserForm!: FormGroup;
+
 
 
 
@@ -29,15 +31,20 @@ export class CreateUserComponent implements OnInit {
         date: '',
         userId: '',
         gender: [''],
-        password: ''
+        password: '',
+        file:'',
       })
      }
 
      //add data
      onSubmit(): any {
+       this.url=this.newuserForm.value;
+
       this.crudService.AddUser(this.newuserForm.value)
-        .subscribe(() => {
+        .subscribe((d) => {
           console.log('Data added successfully!');
+          console.log(d);
+          
           this.ngZone.run(() => this.router.navigateByUrl('/useraction'))
         }, (err) => {
           console.log(err);
@@ -45,6 +52,40 @@ export class CreateUserComponent implements OnInit {
     }
 
   ngOnInit(): void {
+
   }
+
+
+
+
+  //file upload
+
+  onSelectFile(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event: any) => { // called once readAsDataURL is completed
+        this.url = event.target.result;
+        //store image from base 64 format 
+        console.log("my ts file url is "+this.url);
+
+      }
+    }
+  }
+
+  // onSelectFile(event:any) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     var reader = new FileReader();
+  
+  //     reader.onload = (event: ProgressEvent) => {
+  //       this.url = (<FileReader>event.target).result;
+  //     }
+  
+  //     reader.readAsDataURL(event.target.files[0]);
+  //   }
+  // }
+
 
 }

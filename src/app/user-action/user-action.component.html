@@ -143,7 +143,9 @@
                                     class="filter" type="text" placeholder="&nbsp;Filter" />
 
                                 </th>
-                                <th scope="col">Password</th>
+                                <!-- <th scope="col">Password</th> -->
+                                <th scope="col">Image</th>
+
                                 <th class="text-center" scope="col">Action</th>
                             </tr>
                         </thead>
@@ -159,7 +161,8 @@
                                 <td>{{user.date}}</td>
                                 <td>{{user.userId}}</td>
                                 <td>{{user.gender}}</td>
-                                <td>{{user.password}}</td>
+                                <!-- <td>{{user.password}}</td> -->
+                                 <img src="{{user.file}}" style="width: 25px; height: 50px;"/> 
 
                                 <td class="text-center">
                                     <button (click)="delete(user._id, i)"

@@ -1,9 +1,21 @@
 <div>
-    <mat-card class="matcard">
+    <!-- <form  [formGroup]="newuserForm"> -->
+    <mat-card class="matcard" [formGroup]="newuserForm">
         <mat-card-header>
             <mat-card-title> Create New User</mat-card-title>
         </mat-card-header>
         <mat-icon>person</mat-icon>
+        <label class="hoverable" for="fileInput">
+            <img  name="image" [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'" width="50px" height="50px"> 
+            <div class="hover-text">Change Image
+              <!-- <img class="camimg" src="assets/cameraicon.jpg" /> -->
+        
+            </div>
+            <div class="background"></div>
+          </label>
+          <br/>
+        <input id="fileInput" type='file' formControlName="file"  (change)="onSelectFile($event)">
+
         <br>
 
         <mat-card>
@@ -103,4 +115,5 @@
 
 
     </mat-card>
+    <!-- </form> -->
 </div>

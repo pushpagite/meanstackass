@@ -54,6 +54,10 @@ let User = new Schema({
    // required:true
   
   },
+  file: {
+    type: String,
+  
+  },
  
 
 }, {
