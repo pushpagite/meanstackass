@@ -21,6 +21,10 @@ mongoose.connect(mongoDb.db, {
 const userRoute = require('./routes/user.routes')
 
 const app = express();
+//set the size limit for file
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb'}));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false

@@ -91,13 +91,15 @@
 
                 <mat-form-field>
                     <mat-label>Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                    <input matInput [type]="hide ? 'password' : 'text'" [formControl]="pw" formControlName="password" required>
                 </mat-form-field>
 
 
                 <mat-form-field>
                     <mat-label> Verify Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'">
+                    <input matInput [type]="hide ? 'password' : 'text'" [formControl]="vpw" required>
+                    <mat-error *ngIf="pw.invalid">{{getErrorPasswordMessage()}}</mat-error>
+
                 </mat-form-field>
                 &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
                 &nbsp;&nbsp;

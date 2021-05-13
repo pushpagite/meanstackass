@@ -70,7 +70,15 @@ export class UserActionComponent implements OnInit {
       this.getTableData();
       this.getUsername();
       this.getUserRole();
+      this.gettempimage()
   
+    }
+
+    gettempimage(){
+      let d=sessionStorage.getItem('image');
+  
+      console.log(d);
+      
     }
   
     getTableData(){
