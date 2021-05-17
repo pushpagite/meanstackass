@@ -37,7 +37,7 @@ export class UpdateUserComponent implements OnInit {
         userId: res['userId'],
         gender: res['gender'],
         password: res['password'],
-       // file:res['file']
+        // file:res['file']
       });
     });
 
@@ -51,7 +51,7 @@ export class UpdateUserComponent implements OnInit {
       userId: '',
       gender: '',
       password: '',
-       //file:''
+      //file:''
     })
   }
 
@@ -61,10 +61,15 @@ export class UpdateUserComponent implements OnInit {
   }
 
   onUpdate(): any {
+    let img = sessionStorage.getItem('image');
+    console.log('session Value' + img);
+    this.updateForm.value.file = img;
+    console.log("form value"+this.updateForm.value.file);
+    
     this.crudService.updateUser(this.getId, this.updateForm.value)
       .subscribe(() => {
         // console.log('Data updated successfully!')
-       // this.updateForm.value.file = sessionStorage.getItem('image');
+        // this.updateForm.value.file = sessionStorage.getItem('image');
         this.ngZone.run(() => this.router.navigateByUrl('/useraction'))
       }, (err) => {
         console.log(err);
@@ -131,6 +136,8 @@ export class UpdateUserComponent implements OnInit {
   // file upload
   url: any = '';
   onSelectFile(event: any) {
+    console.log('Inside File Upload');
+
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
 
@@ -140,9 +147,7 @@ export class UpdateUserComponent implements OnInit {
       reader.onload = (event: any) => { // called once readAsDataURL is completed
         this.url = event.target.result;
         //store image from base 64 format 
-        // console.log("my ts file url is " + this.url);
         sessionStorage.setItem('image', this.url)
-        // console.log('File value in onselect'+this.newuserForm.value.file);
 
 
       }

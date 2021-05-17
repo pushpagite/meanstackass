@@ -122,6 +122,7 @@ userRoute.put('/:id',(req,res) => {
       date:req.body.date,
       gender:req.body.gender, 
       password:req.body.password,
+      file:req.body.file,
  };
 User.findByIdAndUpdate(req.params.id,{$set: user},{new: true},(err,doc) => {
     if(!err) { res. send(doc);}
@@ -162,7 +163,7 @@ userRoute.post(
       
 
       });
-      console.log(user);
+     // console.log(user);
       if (!user)
         return res.status(400).json({
           message: "User Not Exist"
