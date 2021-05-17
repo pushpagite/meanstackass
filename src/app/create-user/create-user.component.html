@@ -75,11 +75,13 @@
 
                 <mat-form-field>
                     <mat-label>Role</mat-label>
-                    <mat-select>
-                        <mat-option value="one"> Manager</mat-option>
-                        <mat-option value="two">General Manager</mat-option>
+                    <mat-select  formControlName="userrole">
+                      <mat-option *ngFor="let r of role" [value]="r.value" >
+                        {{r.viewValue}}
+                      </mat-option>
                     </mat-select>
-                </mat-form-field>
+          
+                  </mat-form-field>
 
 
                 <mat-form-field>

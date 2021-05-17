@@ -5,7 +5,7 @@
 }
 
 
-/* 
+
 .hoverable{
     position: relative;
     display: block;
@@ -15,6 +15,7 @@
     border: 1px solid white;
     border-radius: 50%;
   }
+  /* 
   .hoverable .hover-text{
     position: absolute;
     display: none;

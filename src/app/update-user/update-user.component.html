@@ -5,33 +5,20 @@
             <mat-icon id="icon">reorder</mat-icon>
 
             <img src="assets/logo.png" id="complogo">
-            <!-- <a mat-icon-button style="margin-left: 1250px;">
-                <mat-icon *ngIf="!avatar" style="margin-top:-110px; margin-left: 110px;">account_circle</mat-icon>
-                <img *ngIf="avatar" [src]="avatar" />
-                <button  (click)="toggleShow()" type="checkbox" style="border: none; margin-top: -100px; background-color: transparent;">
-                <mat-icon style="margin-top: -50px; ">expand_less</mat-icon>
-            </button>
-            </a> event
-            <div id="logout"  *ngIf="isShown" class="row container-fluid">
-                <div style="background-color: transparent; ;">
 
-                    <button type="submit" style="background-color: transparent; margin-left: 50px; border: none; " (click)="Logout()">Logout</button>
-
-                </div>
-        </div> -->
-        <div style="margin-left: 1200px; margin-top: -40px; height: 70px; width: 100px;">
-            <a mat-icon-button>
-                <mat-icon *ngIf="!avatar" style="margin-top: -30px;">account_circle</mat-icon>
-                <img *ngIf="avatar" [src]="avatar" />
-            </a>
-            <h3 style="margin-left: 50px;margin-top: -50px;">{{uname}}</h3>
-            <h3 style="margin-left: 50px;margin-top: -25px;">{{role}}</h3>
-        </div>
-        <div style="margin-left: 1350px; margin-top: -70px;">
-           <button type="submit" (click)="Logout()" style="background: transparent;border: none;">
-            <mat-icon>expand_less</mat-icon>
-        </button> 
-    </div>
+            <div style="margin-left: 1200px; margin-top: -40px; height: 70px; width: 100px;">
+                <a mat-icon-button>
+                    <mat-icon *ngIf="!avatar" style="margin-top: -30px;">account_circle</mat-icon>
+                    <img *ngIf="avatar" [src]="avatar" />
+                </a>
+                <h3 style="margin-left: 50px;margin-top: -50px;">{{uname}}</h3>
+                <h3 style="margin-left: 50px;margin-top: -25px;">{{role}}</h3>
+            </div>
+            <div style="margin-left: 1350px; margin-top: -70px;">
+                <button type="submit" (click)="Logout()" style="background: transparent;border: none;">
+                    <mat-icon>expand_less</mat-icon>
+                </button>
+            </div>
 
 
         </div>
@@ -54,14 +41,16 @@
 
                 <div>
                     <div class="icon">
-                        <button [routerLink]="['/graphmodule']" routerLinkActive="router-link-active" >
+                        <button [routerLink]="['/graphmodule']" routerLinkActive="router-link-active">
                             <mat-icon> format_align_right</mat-icon>
                             Dashboard
                         </button>
                         <br> <br>
-                        <button [routerLink]="['/useraction']" routerLinkActive="router-link-active" >
+                        <button [routerLink]="['/useraction']" routerLinkActive="router-link-active">
                             <mat-icon> people</mat-icon>
                             Users
+
+
                         </button>
                     </div>
                 </div>
@@ -71,95 +60,114 @@
             <h4>Dashboard</h4>
 
             <div class="table-view">
-            <mat-card>
-                <mat-card-header>
-                    <mat-card-title> Create New User</mat-card-title>
+                <mat-card [formGroup]="updateForm">
+                    <mat-card-header>
+                        <mat-card-title> Create New User</mat-card-title>
                     </mat-card-header>
-                <mat-icon>person</mat-icon>
-                        <br>
-            
-            <mat-card class="matcard">
-                <form [formGroup]="updateForm">
+                    <mat-icon>person</mat-icon>
+                    <label class="hoverable" for="fileInput">
+                        <img name="image" [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'"
+                            width="50px" height="50px">
+                        <div class="hover-text">Change Image
+                            <!-- <img class="camimg" src="assets/cameraicon.jpg" /> -->
 
-                <mat-form-field>
-                    <mat-label>User Name</mat-label>
-                    <input matInput formControlName="username">
-                  </mat-form-field>
+                        </div>
+                        <div class="background"></div>
+                    </label>
+                    <br />
+                    <input id="fileInput" type='file' formControlName="file" (change)="onSelectFile($event)">
 
-                  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                    <br>
 
-                <mat-form-field>
-                    <mat-label>First Name</mat-label>
-                    <input matInput formControlName="fname">
-                </mat-form-field>
+                    <mat-card class="matcard">
+                        <form [formGroup]="updateForm">
 
-                <mat-form-field>
-                    <mat-label>Last Name</mat-label>
-                    <input matInput formControlName="lname">
-                </mat-form-field>
-                 &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                            <mat-form-field>
+                                <mat-label>User Name</mat-label>
+                                <input matInput formControlName="username">
+                            </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>Email</mat-label>
-                    <input matInput formControlName="email">
-                </mat-form-field>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp; &nbsp;&nbsp;
 
-                <mat-form-field>
-                    <mat-label>Phone</mat-label>
-                    <input matInput formControlName="phone">
-                </mat-form-field>
-                 &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-                
-                 <mat-form-field>
-                    <mat-label>DOB</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="date">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>First Name</mat-label>
+                                <input matInput formControlName="fname">
+                            </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>User ID</mat-label>
-                    <input matInput formControlName="userId">
-                </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Last Name</mat-label>
+                                <input matInput formControlName="lname">
+                            </mat-form-field>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp; &nbsp;&nbsp;
 
-                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                            <mat-form-field>
+                                <mat-label>Email</mat-label>
+                                <input matInput formControlName="email">
+                            </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>Role</mat-label>
-                    <mat-select formControlName="userrole">
-                      <mat-option value="M">Manager</mat-option>
-                      <mat-option value="G">General</mat-option>
-                    </mat-select>
-                  </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Phone</mat-label>
+                                <input matInput formControlName="phone">
+                            </mat-form-field>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp; &nbsp;&nbsp;
 
+                            <mat-form-field>
+                                <mat-label>DOB</mat-label>
+                                <input matInput [matDatepicker]="picker" formControlName="date">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
 
-                  <mat-form-field>
-                    <mat-label>Gender</mat-label>
-                    <input matInput formControlName="gender">
-                </mat-form-field>
-                 &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                            <mat-form-field>
+                                <mat-label>User ID</mat-label>
+                                <input matInput formControlName="userId">
+                            </mat-form-field>
 
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp; &nbsp;&nbsp;
 
-                 <mat-form-field>
-                    <mat-label>Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-                </mat-form-field>
-
-                
-                <mat-form-field>
-                    <mat-label> Verify Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'">
-                </mat-form-field>
-                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-                <button mat-button color="primary" [routerLink]="['/useraction']">Cancel</button>
-                <button mat-raised-button color="accent" [routerLink]="['/useraction']" routerLinkActive="router-link-active" (click)="onUpdate()">UPDATE</button>
+                            <mat-form-field>
+                                <mat-label>Role</mat-label>
+                                <mat-select formControlName="userrole">
+                                    <mat-option value="M">Manager</mat-option>
+                                    <mat-option value="G">General</mat-option>
+                                </mat-select>
+                            </mat-form-field>
 
 
-                </form>
+                            <mat-form-field>
+                                <mat-label>Gender</mat-label>
+                                <input matInput formControlName="gender">
+                            </mat-form-field>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp; &nbsp;&nbsp;
 
 
-            </mat-card>
-        </mat-card>
+                            <mat-form-field>
+                                <mat-label>Password</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                            </mat-form-field>
+
+
+                            <mat-form-field>
+                                <mat-label> Verify Password</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'">
+                            </mat-form-field>
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp; &nbsp;&nbsp;
+                            <button mat-button color="primary" [routerLink]="['/useraction']">Cancel</button>
+                            <button mat-raised-button color="accent" [routerLink]="['/useraction']"
+                                routerLinkActive="router-link-active" (click)="onUpdate()">UPDATE</button>
+
+
+                        </form>
+
+
+                    </mat-card>
+                </mat-card>
 
             </div>
             <!--New added end-->

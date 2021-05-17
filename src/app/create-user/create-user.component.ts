@@ -13,6 +13,11 @@ import { ActivatedRoute } from '@angular/router';
 export class CreateUserComponent implements OnInit {
   hide = true;
   url: any = '';
+  role = [
+    { value: 'Manager', viewValue: 'Manager' },
+    { value: 'General', viewValue: 'General' }
+
+  ];
 
 
   newuserForm!: FormGroup;
@@ -34,6 +39,7 @@ export class CreateUserComponent implements OnInit {
       phone: '',
       date: '',
       userId: '',
+      userrole:'',
       gender: [''],
       password: '',
       file: '',
